@@ -11,10 +11,11 @@ O script gera a **estrutura de arquivos**, o **conteúdo de cada arquivo** e emp
 ## ⚙️ Como funciona
 
 1. Defina um **pedido** no arquivo `config.json`, descrevendo o projeto que deseja gerar.  
-2. O script `main.js` envia esse pedido para a **Gemini IA**, que retorna:
-   - Estrutura de arquivos em JSON  
-   - Conteúdo de cada arquivo (somente dentro de blocos de código)  
-3. O projeto é salvo em uma pasta temporária e, ao final, gerado como um **arquivo .zip**.
+2. Execute o `main.js`, que utiliza as funções do `util.js` para:
+   - Solicitar à Gemini IA a estrutura de arquivos e o conteúdo de cada arquivo.  
+   - Criar a estrutura localmente.  
+   - Gerar um **arquivo .zip** com toda a source.  
+3. O `.zip` será salvo na mesma pasta do projeto.
 
 ### Exemplo de `config.json`
 
@@ -66,21 +67,22 @@ npm install
 node main.js
 ```
 
-4. O bot será gerado automaticamente e você receberá um arquivo `.zip` com a source completa.
+4. O bot será gerado automaticamente e você receberá um arquivo `.zip` com a source completa na mesma pasta do projeto.
 
 ---
 
 ## 🗂️ Estrutura do projeto
 
 ```
-📦 auto-discord-bot
- ┣ 📜 main.js
- ┣ 📜 config.json
- ┣ 📁 outputs
- ┃ ┗ 📜 (aqui ficam os .zip gerados)
- ┣ 📜 package.json
+📦 source-bot-generation
+ ┣ 📜 main.js       # Script principal que chama o util.js
+ ┣ 📜 util.js       # Funções para gerar bot, criar arquivos e zip
+ ┣ 📜 config.json   # Configurações do projeto e Gemini API keys
+ ┣ 📜 package.json  # Dependências do Node.js
  ┗ 📜 README.md
 ```
+
+> O `.zip` gerado com a source ficará na mesma pasta do projeto.
 
 ---
 
